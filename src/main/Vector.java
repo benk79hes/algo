@@ -32,6 +32,17 @@ public class Vector
 		return vector;
 	}
 
+	public static int getMaxInteger(int[] vector)
+	{
+		int max = vector[0];
+
+		for (int i = 1; i < vector.length; i++) {
+			max = Math.max(vector[i], max);
+		}
+
+		return max;
+	}
+
 	public static int getRandomElement(int[] vector)
 	{
 		Random rand = new Random();

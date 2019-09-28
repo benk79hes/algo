@@ -4,11 +4,13 @@ public class Main
 {
 	public static void main(String[] args)
 	{
+		testSortFrequency(50);
 		// testSearch(50, 35);
 		// statSearch(1000, 35, 100);
 
 		//testSort(10);
 
+		/*
 		int[] a = {0,2,6,6,9,15,22,69,101};
 		Vector.showVector(a);
 		int[] b = {5,9,10,24};
@@ -16,7 +18,16 @@ public class Main
 
 		int[] c = Merge.mergeSorted(a, b);
 		Vector.showVector(c);
+		*/
+	}
 
+	public static void testSortFrequency(int qty)
+	{
+		int[] test = Vector.randomIntVector(25, 100);
+
+		Vector.showVector(test);
+		int[] result = Sort.sortFrequency(test);
+		Vector.showVector(result);
 	}
 
 	public static void testSort(int qty)

@@ -56,6 +56,31 @@ public class Sort
 	}
 
 
+	/**
+	 * @return
+	 */
+	public static int[] sortFrequency(int[] vector)
+	{
+		int k = Vector.getMaxInteger(vector) + 1;
+		int[] frequency = new int[k];
+
+		for (int i = 0; i < vector.length; i++) {
+			frequency[vector[i]]++;
+		}
+
+		Vector.showVector(frequency);
+
+		int[] result = new int[vector.length];
+
+		int resI = 0;
+		for (int i = 0; i < frequency.length; i++) {
+			for (int q = 0; q < frequency[i]; q++) {
+				result[resI] = i;
+				resI++;
+			}
+		}
+		return result;
+	}
 
 	public static int searchMin (int[] vector, int start) {
 		int found = -1;
