@@ -39,6 +39,24 @@ public class Sort
 		return null;
 	}
 
+	/**
+	 * @todo
+	 * @return
+	 */
+	public static int[] sortInsert(int[] vector){
+
+		for (int sorting = 1; sorting < vector.length; sorting++) {
+			int sortingValue = vector[sorting];
+
+			for (int comparing = sorting - 1; comparing >= 0; comparing--) {
+				// if (comparing > )
+			}
+		}
+		return null;
+	}
+
+
+
 	public static int searchMin (int[] vector, int start) {
 		int found = -1;
 		int min = vector[start];

@@ -43,6 +43,14 @@ public class Vector
 	public static void showVector(int[] vector)
 	{
 		for (int i = 0; i < vector.length; i++) {
+			System.out.print(vector[i] + " ");
+		}
+		System.out.println();
+	}
+
+	public static void printVector(int[] vector)
+	{
+		for (int i = 0; i < vector.length; i++) {
 			System.out.println(i + " =>\t" + vector[i]);
 		}
 	}
