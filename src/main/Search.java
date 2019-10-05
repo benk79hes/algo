@@ -19,11 +19,6 @@ public class Search
 		}
 	}
 
-	public static void stat()
-	{
-
-	}
-
 	public int searchLinear(int value)
 	{
 		counter = 0;
