@@ -41,7 +41,7 @@ public class Search
 		return -1;
 	}
 
-	public int searchDico(int value, boolean output)
+	public int searchDicoLinear(int value, boolean output)
 	{
 		counter = 0;
 
@@ -70,9 +70,38 @@ public class Search
 		return -1;
 	}
 
+	public int searchDicoLinear(int value)
+	{
+		return searchDicoLinear(value, false);
+	}
+
+	public int searchDico(int value, int limitInf, int limitSup)
+	{
+		if (limitSup < limitInf)
+			return -1;
+
+		int median = (limitSup + limitInf) / 2;
+
+		if (vector[median] == value) {
+			return median;
+		}
+
+		if (vector[median] > value) {
+			limitSup = median - 1;
+		}
+		else {
+			limitInf = median + 1;
+		}
+
+		 return searchDico(value, limitInf, limitSup);
+	}
+
 	public int searchDico(int value)
 	{
-		return searchDico(value, false);
+		int limitInf = 0;
+		int limitSup = vector.length;
+
+		return searchDico(value, limitInf, limitSup);
 	}
 
 

@@ -4,8 +4,8 @@ public class Main
 {
 	public static void main(String[] args)
 	{
-		testSortFrequency(50);
-		// testSearch(50, 35);
+		//testSortFrequency(50);
+		testSearch(50, 35);
 		// statSearch(1000, 35, 100);
 
 		//testSort(10);
@@ -41,9 +41,9 @@ public class Main
 	public static void testSearch(int qty, int search)
 	{
 		Search s = new Search(50);
-		s.showVector();
+		//s.showVector();
 
-		testSearchLinear(s, search);
+		//testSearchLinear(s, search);
 		testSearchDico(s, search);
 	}
 
@@ -63,7 +63,7 @@ public class Main
 
 	public static void testSearchDico(Search o, int search) {
 
-		int found = o.searchDico(search, true);
+		int found = o.searchDico(search);
 
 		System.out.print("Test recherche dicotomique: ");
 		if (found < 0) {
@@ -72,7 +72,7 @@ public class Main
 		else {
 			System.out.print("La valeur " + search + " se trouve à l'index " + found);
 		}
-		System.out.println(" (" + o.getCounter() + " essais)");
+		// System.out.println(" (" + o.getCounter() + " essais)");
 	}
 
 	public static void statSearch(int qty, int search, int tests)
