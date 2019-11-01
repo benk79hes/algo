@@ -95,4 +95,124 @@ public class Sort
 
 		return found;
 	}
+
+
+
+
+
+
+
+
+	public static void quickSort(int[] vector)
+	{
+		quickSort(vector, 0, vector.length - 1);
+	}
+
+	private static void quickSort(int[] vector, int initialLeft, int initialRight)
+	{
+		System.out.println("Sort from " + initialLeft + " to " + initialRight);
+		Vector.showVector(vector);
+		// clause de finitude
+		if (initialLeft == initialRight || initialRight < initialLeft)
+			return;
+
+		// pas recursif
+		int pivotPosition = initialLeft;
+		int pivot = vector[pivotPosition];
+
+
+		int l = initialLeft + 1;
+		int r = initialRight;
+
+		l++;
+
+
+		while (r >= l) {
+
+			while (vector[l] <= pivot && l <= r) {
+				l++;
+			}
+			while (vector[r] > pivot && l < r) {
+				r--;
+			}
+
+			if (r > l) {
+				permutePosition(vector, l, r);
+				r--;
+				l++;
+			}
+
+		}
+
+		int newPivotPosition = r;
+
+		permutePosition(vector, pivotPosition, newPivotPosition);
+
+		Vector.showVector(vector);
+
+		quickSort(vector, initialLeft, newPivotPosition - 1);
+		quickSort(vector, newPivotPosition + 1, initialRight);
+	}
+
+	private static void quickSort1(int[] vector, int l, int r)
+	{
+		System.out.println("Sort from " + l + " to " + r);
+		Vector.showVector(vector);
+		// clause de finitude
+		if (l == r || r < l)
+			return;
+
+		// pas recursif
+		int pivotPosition = l;
+		int initialLeft = l;
+		int initialRight = r;
+		int pivot = vector[l];
+
+		int lastLeft = l;
+
+		boolean toRight = true;
+
+		while (r > l) {
+
+			if (toRight) {
+				l++;
+				if (vector[l] >= pivot) {
+					toRight = false;
+				}
+				else {
+
+				}
+			}
+			else {
+				if (vector[r] < pivot) {
+					permutePosition(vector, l, r);
+					toRight = true;
+				}
+				r--;
+			}
+		}
+
+		int newPivotPosition = l-1;
+		permutePosition(vector, pivotPosition, newPivotPosition);
+
+		Vector.showVector(vector);
+		quickSort(vector, initialLeft, newPivotPosition - 1);
+		quickSort(vector, newPivotPosition + 1, initialRight);
+	}
+
+	private static void permutePosition(int[] vector, int a, int b)
+	{
+		int t = vector[a];
+		vector[a] = vector[b];
+		vector[b] = t;
+	}
+
+	public static boolean isSorted(int[] vector)
+	{
+		for (int i = 1; i < vector.length; i++) {
+			if (vector[i] < vector[i-1])
+				return false;
+		}
+		return true;
+	}
 }

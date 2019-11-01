@@ -4,8 +4,22 @@ public class Main
 {
 	public static void main(String[] args)
 	{
+
+		int[] v = Vector.randomIntVector(15, 100);
+
+		//Vector.showVector(v);
+		Sort.quickSort(v);
+		//Vector.showVector(v);
+
+		if (Sort.isSorted(v)) {
+			System.out.println("Bien trié");
+		}
+		else {
+			System.out.println("OOOOOOPSSSSSSSSSSSSSSSSSSS !!!!!");
+		}
+
 		//testSortFrequency(50);
-		testSearch(50, 35);
+		//testSearch(50, 35);
 		// statSearch(1000, 35, 100);
 
 		//testSort(10);
