@@ -17,7 +17,6 @@ public class Sort
 				vector[position] = vector[replaceWith];
 				vector[replaceWith] = tmp;
 			}
-
 		}
 
 		return vector;
@@ -96,7 +95,16 @@ public class Sort
 		return found;
 	}
 
-
+	/**
+	 * Methode pour afficher
+	 */
+	private static void showVector(int[] vector)
+	{
+		for (int i = 0; i < vector.length; i++) {
+			System.out.print(vector[i] + " ");
+		}
+		System.out.println();
+	}
 
 
 
