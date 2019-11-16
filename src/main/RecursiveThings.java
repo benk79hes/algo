@@ -7,10 +7,10 @@ public class RecursiveThings
 	{
 		//mistere("Nicole");
 		//return;
+		affichePossibilites01(3);
+//		char[] test = {'a', 'b', 'c'};
 
-		char[] test = {'a', 'b', 'c'};
-
-		afficheCharMultiVector(permutation(test));
+//		afficheCharMultiVector(permutation(test));
 		/*int[] vector = Vector.randomIntVector(10, 100);
 
 		Vector.showVector(vector);
@@ -19,14 +19,39 @@ public class RecursiveThings
 		System.out.println("Index: " + min + ", valeur: " + vector[min]); */
 	}
 
+	public static void affichePossibilites01(int qty)
+	{
+		affichePossibilites01("", qty);
+	}
+
+	private static void affichePossibilites01(String fixed, int qty){
+		int[] poss = {0, 1};
+
+		if (qty == 0) {
+			System.out.println(fixed);
+			return;
+		}
+
+		for (int n = 0; n < poss.length; n++) {
+			String f = fixed + poss[n];
+			affichePossibilites01(f,qty - 1);
+		}
+
+	}
+
 	public static void afficheCharMultiVector(char[][] vector)
 	{
 		for (int i = 0; i < vector.length; i++) {
-			for (int j = 0; j < vector[i].length; j++) {
-				System.out.print(" " + vector[i][j]);
-			}
-			System.out.println();
+			afficheCharVector(vector[i]);
 		}
+	}
+
+	public static void afficheCharVector(char[] vector)
+	{
+		for (int j = 0; j < vector.length; j++) {
+			System.out.print(vector[j]);
+		}
+		System.out.println();
 	}
 
 
@@ -58,56 +83,80 @@ public class RecursiveThings
 	/*
 	 * Suite, Exerice 3
 	 */
-	public static char[][] permutation(char[] vector){
+	static char tab[];
+	public static char[][] permutation(int length){
+		tab = new char[length];
+
+		for (int i = 0; i < length; i++)
+			tab[i] = (char)('A' + i);
+
+		return permutation(tab);
+	}
+
+	public void echange(int i, int j){
+		char temp = tab[i];
+		tab[i] = tab[j];
+		tab[j] = temp;
+	}
+
+	/* public static char[][] permutation(char[] vector){
 		int[] indexes = new int[vector.length];
 
 		for (int i = 0; i < vector.length; i++) {
 			indexes[i] = i;
 		}
 		return permutation(vector, indexes);
-	}
+	} */
 
-	public static char[][] permutation(char[] vector, int[] indexes)
+	public static char[][] permutation(char[] vector)
 	{
-		int vLength = indexes.length;
-		int resLength = factorial(indexes.length);
-		char[][] result = new char[2][vLength];
+		int vLength = vector.length;
+		int resLength = factorial(vector.length);
 
-		if (vLength == 2) {
-			result[0] = vector;
-			result[1][0] = vector[indexes[0]];
-			result[1][1] = vector[indexes[1]];
-			result[1][0] = vector[indexes[1]];
-			result[1][1] = vector[indexes[0]];
+		System.out.print("Permutation de : ");
+		afficheCharVector(vector);
+
+		//char[][] result = new char[resLength][vLength];
+		//char[][] result;
+
+		if (vLength == 1) {
+			char[][] result = {vector};
 			return result;
 		}
 
 		int resI = 0;
-		for (int i = 0; i < indexes.length; i++) {
-			int[] others = new int[vLength-1];
+
+		char[][] result = new char[resLength][];
+		for (int i = 0; i < vector.length; i++) {
+			char[] others = new char[vector.length - 1];
+
+			char fixedChar = vector[i];
+
 
 			int iI = 0;
-			for (int j = 0; j < others.length; j++){
+			for (int j = 0; j < vector.length; j++){
 				if (iI == i)
 					continue;
 
-				others[j] = indexes[iI];
+				others[iI] = vector[j];
 				iI++;
 			}
 
-			char[][] otherPermutations = permutation(vector, others);
+			char[][] otherPermutations = permutation(others);
 
-			//char[][]
-			//result[i][0] = vector[];
 
 			for (int n = 0; n < otherPermutations.length; n++) {
-				char[] newPerm = new char[indexes.length];
-				newPerm[0] = vector[indexes[i]];
+
+				char[] newPerm = new char[otherPermutations[n].length + 1];
+
+				newPerm[0] = fixedChar;
 
 				for (int nn = 0; nn < otherPermutations[n].length; nn++) {
 					newPerm[nn+1] = otherPermutations[n][nn];
 				}
-				//result[resI]
+
+				result[resI] = newPerm;
+				resI++;
 			}
 //			char first =
 		}
